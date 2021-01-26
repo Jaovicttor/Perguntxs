@@ -1,0 +1,23 @@
+{
+  "name": "perguntxs",
+  "version": "1.0.0",
+  "description": "Um pequeno site de perguntas e respostas no estilo fórum e Yahoo respostas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaovicttor/Perguntxs.git"
+  },
+  "author": "@Jaovicttor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaovicttor/Perguntxs/issues"
+  },
+  "homepage": "https://github.com/Jaovicttor/Perguntxs#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
