@@ -5,6 +5,9 @@ const bodyparser = require("body-parser");
 
 const conexao = require("./database/conexao");
 
+//criando a tabela pergunta no bd
+const Pergunta = require("./database/Pergunta");
+
 conexao
     .authenticate()
     .then(()=>{
@@ -25,18 +28,55 @@ app.use(bodyparser.json()); //permite que a API entenda dados enviados no format
 
 
 //DEFININDO ROTAS
-app.get("/",(req,res)=>{
-    res.render('index');
+app.get("/",(req,res) => {
+    Pergunta.findAll({
+        raw: true, //serve para trazer apenas as informações necessarias
+        order:[   //ordenar a forma de listagem do resultado do bd
+        ['id','desc'] //['coluna do bd', 'forma de listagem ASC OU DESC']
+        ]
+    }).then(perguntas => {
+        res.render("index",{
+            perguntas
+        });
+    });
+    
 });
 
 app.get("/perguntar",(req,res)=>{
     res.render('perguntar');
 });
 
+app.get("/pergunta/:id",(req,res)=>{
+    var id = req.params.id;
+    Pergunta.findOne({
+        where:{id}
+    }).then(pergunta =>{
+        if(pergunta != undefined){
+            res.render("pergunta",{
+                pergunta
+            });
+        }else{
+           res.redirect("/"); 
+        }
+    })
+})
+
 app.post("/salvarpergunta",(req,res)=>{
+
+    //recebendo dados do formulario
     var titulo = req.body.titulo;
-    var descri = req.body.pergunta;
-    res.send(req.body);
+    var descricao = req.body.pergunta;
+
+    //adicionando os dados ao banco de dados
+    Pergunta.create({
+        titulo,
+        descricao
+    }).then(()=>{
+        //apos terminar de adicionar redireciona o usuario para a home
+        res.redirect("/")
+    })
+
+    
 })
 
 

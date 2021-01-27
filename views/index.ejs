@@ -1,9 +1,37 @@
 <%- include("./partial/header.ejs"); %>
   <body>
     <%- include("./partial/navbar.ejs"); %>
-    <h1>Home</h1>
+    
 
 
+    <div class="container">
+      <hr>
+      <h1>Perguntas</h1>
+      <hr>
+      <a href="/perguntar" class="btn btn-secondary"> Perguntar</a>
+      <br>
+      <% if(perguntas) { 
+        perguntas.forEach(pergunta => {  %>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h4> <%= pergunta.titulo  %> </h4>
+            </div>
+            <div class="card-footer">
+              <a href="/pergunta/<%=pergunta.id%>" class="btn btn-secondary">Responder</a>
+              
+            </div>
+
+          </div>
+
+         
+        <% }); }  %>
+      
+
+    </div>
+    
+      
+       
     
    
   </body>
