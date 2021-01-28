@@ -1,7 +1,5 @@
-const { Sequelize } = require('sequelize');
-const Sequileze = require('sequelize');
-const conexao = require('./conexao.js');
-
+const Sequelize = require("sequelize");
+const conexao = require("./conexao.js");
 
 //definindo o model pergunta para o bd
 
@@ -10,7 +8,7 @@ const Pergunta = conexao.define('perguntas',{
 
     //definindo os campos da minha tabela
     titulo: {
-        type: Sequileze.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     descricao:{

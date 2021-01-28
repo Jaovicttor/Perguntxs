@@ -1,8 +1,9 @@
 <%- include("./partial/header.ejs"); %>
-  <body>
+
+<body>
     <%- include("./partial/navbar.ejs"); %>
     <div class="container">
-        
+
         <div class="card" id="formulario-pergunta">
 
             <div class="card-header">
@@ -11,20 +12,20 @@
 
             <div class="card-body">
                 <form action="/salvarpergunta" method="POST">
-        
+
                     <label for="titulo"> Titulo </label>
                     <input type="text" placeholder="Titulo" class="form-control" id="titulo" name="titulo">
                     <br>
-        
+
                     <label for="desc"> Descrição</label>
-                    <textarea name="pergunta" id="desc" cols="30" rows="1" placeholder="Descreva a sua pergunta" class="form-control" ></textarea>
+                    <textarea name="pergunta" id="desc" cols="30" rows="1" placeholder="Descreva a sua pergunta"
+                        class="form-control"></textarea>
                     <br>
 
                     <button class="btn btn-secondary"> Perguntar</button>
-        
+
                 </form>
             </div>
         </div>
-  </body>
-  <%- include("./partial/footer.ejs"); %>
-  
+</body>
+<%- include("./partial/footer.ejs"); %>
